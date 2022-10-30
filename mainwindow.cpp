@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 void MainWindow::closeEvent(QCloseEvent *event)
 {
    QMessageBox::StandardButton resBtn = QMessageBox::question(this,
-                                                              "",
+                                                              " ",
                                                               tr("Сохранить траектории?\n"),
                                                               QMessageBox::No | QMessageBox::Yes,
                                                               QMessageBox::No);

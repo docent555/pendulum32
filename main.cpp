@@ -34,6 +34,7 @@ int main(int argc, char *argv[])
 {
    QApplication a(argc, argv);
    MainWindow window;
+   window.setWindowTitle("Решение уравнения маятника (32-bit)");
    window.show();
    return a.exec();
 }

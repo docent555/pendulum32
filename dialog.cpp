@@ -7,47 +7,49 @@ Dialog::Dialog(
     double &hh, double &LL, int &Nthh, double &Arr, double &Aii, double &deltaa, QWidget *parent)
     : h(hh), L(LL), Nth(Nthh), Ar(Arr), Ai(Aii), delta(deltaa), QDialog(parent), ui(new Ui::Dialog)
 {
-    ui->setupUi(this);
+   ui->setupUi(this);
 
-    f.open("input.dat", ios::in);
-    if (!f) {
-       //        qDebug() << "Error opening file input.dat";
-       //        exit(1);
-       Ar = 1;
-       Nth = 8;
-       delta = -1;
-       L = 10;
-       h = 0.05;
-       phase_space = 1;
-       draw_trajectories = 0;
-    } else {
-       f >> h >> L >> Nth >> Ar >> delta >> phase_space >> draw_trajectories;
-       f.close();
-    }
+   this->setWindowTitle("Параметры");
 
-    ui->lineEdit_Ar->insert(QString::number(Ar));
-    ui->lineEdit_Nth->insert(QString::number(Nth));
-    ui->lineEdit_delta->insert(QString::number(delta));
-    ui->lineEdit_L->insert(QString::number(L));
-    ui->lineEdit_h->insert(QString::number(h));
+   f.open("input.dat", ios::in);
+   if (!f) {
+      //        qDebug() << "Error opening file input.dat";
+      //        exit(1);
+      Ar = 1;
+      Nth = 8;
+      delta = -1;
+      L = 10;
+      h = 0.05;
+      phase_space = 1;
+      draw_trajectories = 0;
+   } else {
+      f >> h >> L >> Nth >> Ar >> delta >> phase_space >> draw_trajectories;
+      f.close();
+   }
 
-    if (phase_space == 0) {
-       ui->radioButton_Ph->setChecked(false);
-       ui->radioButton_Tr->setChecked(true);
-    } else {
-       ui->radioButton_Ph->setChecked(true);
-       ui->radioButton_Tr->setChecked(false);
-    }
+   ui->lineEdit_Ar->insert(QString::number(Ar));
+   ui->lineEdit_Nth->insert(QString::number(Nth));
+   ui->lineEdit_delta->insert(QString::number(delta));
+   ui->lineEdit_L->insert(QString::number(L));
+   ui->lineEdit_h->insert(QString::number(h));
 
-    if (draw_trajectories == 1)
-       ui->checkBox->setChecked(true);
-    else
-       ui->checkBox->setChecked(false);
+   if (phase_space == 0) {
+      ui->radioButton_Ph->setChecked(false);
+      ui->radioButton_Tr->setChecked(true);
+   } else {
+      ui->radioButton_Ph->setChecked(true);
+      ui->radioButton_Tr->setChecked(false);
+   }
+
+   if (draw_trajectories == 1)
+      ui->checkBox->setChecked(true);
+   else
+      ui->checkBox->setChecked(false);
 }
 
 Dialog::~Dialog()
 {
-    delete ui;
+   delete ui;
 }
 
 void Dialog::on_pushButton_OK_clicked()
