@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
    thread = new QThread();
 
    this->setCentralWidget(widget);
-   this->resize(1300, 600);
+   this->resize(1300, 800);
 
    // Запуск выполнения метода run будет осуществляться по сигналу запуска от соответствующего потока
    //   connect(thread, &QThread::started, r, &Rkn::calculate);
